@@ -114,3 +114,12 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(article) {
+  const newDiv = document.createElement('div')
+  newDiv.articleContent = article
+  return newDiv;
+
+}
+const div = articleMaker('lambda')
+document.body.prepend(div);
