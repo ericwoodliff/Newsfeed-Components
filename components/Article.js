@@ -115,11 +115,41 @@ const data = [
   Refresh the page to see the new article.
 */
 
+const articles = document.querySelector('.articles');
 function articleMaker(article) {
-  const newDiv = document.createElement('div')
-  newDiv.articleContent = article
-  return newDiv;
-
+  const articleDiv = document.createElement('p');
+  const date = document.createElement('p'); 
+  const title = document.createElement('h2');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expand = document.createElement('span');
+  articleDiv.appendChild(title);
+  articleDiv.appendChild(date);
+  articleDiv.appendChild(firstParagraph);
+  articleDiv.appendChild(secondParagraph);
+  articleDiv.appendChild(thirdParagraph);
+  articleDiv.appendChild(expand);
+  articleDiv.classList.add('article', 'article-open');
+  title.classList.add('title');
+  date.classList.add('date');
+  firstParagraph.classList.add('firstParagraph');
+  secondParagraph.classList.add('secondParagraph');
+  thirdParagraph.classList.add('thirdParagraph');
+  expand.classList.add('expand');
+  title.textContent = article.title;
+  date.textContent = article.date;
+  firstParagraph.textContent = article.firstParagraph;
+  secondParagraph.textContent = article.secondParagraph;
+  thirdParagraph.textContent = article.thirdParagraphl
+  expand.textContent = '+';
+  expand.addEventListener('click' , () => {
+    articleDiv.classList.toggle('article-open');
+  })
+  return articleDiv;
 }
-const div = articleMaker('lambda')
-document.body.prepend(div);
+
+data.forEach(obj => {
+  const articleDiv = articleMaker(obj);
+  articles.appendChild(articleDiv);
+})
