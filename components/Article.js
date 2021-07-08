@@ -86,6 +86,34 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'TEEEEST',
+    date: 'June 7th, 2020',
+    firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Squirtle Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wartortle Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Blastoise Lorem ipsum dolor sit amet, consectetur adipiscing elit. Caterpie Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Metapod Lorem ipsum dolor sit amet, consectetur adipiscing elit. Butterfree
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Weedle Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Kakuna Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beedrill Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit.`,
+
+    secondParagraph: `Pidgey Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pidgeotto Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Pidgeot Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rattata Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Raticate Lorem ipsum dolor sit amet, consectetur adipiscing elit. Spearow Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Fearow Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ekans Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Arbok Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pikachu Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   }
 ];
 
@@ -117,20 +145,22 @@ const data = [
 
 const articles = document.querySelector('.articles');
 function articleMaker(article) {
-  const articleDiv = document.createElement('p');
+  //creating new elements for article
+  const articleList = document.createElement('p');
   const date = document.createElement('p'); 
   const title = document.createElement('h2');
   const firstParagraph = document.createElement('p');
   const secondParagraph = document.createElement('p');
   const thirdParagraph = document.createElement('p');
   const expand = document.createElement('span');
-  articleDiv.appendChild(title);
-  articleDiv.appendChild(date);
-  articleDiv.appendChild(firstParagraph);
-  articleDiv.appendChild(secondParagraph);
-  articleDiv.appendChild(thirdParagraph);
-  articleDiv.appendChild(expand);
-  articleDiv.classList.add('article', 'article-open');
+  // append to parent element
+  articleList.appendChild(title);
+  articleList.appendChild(date);
+  articleList.appendChild(firstParagraph);
+  articleList.appendChild(secondParagraph);
+  articleList.appendChild(thirdParagraph);
+  articleList.appendChild(expand);
+  articleList.classList.add('article', 'article-open');
   title.classList.add('title');
   date.classList.add('date');
   firstParagraph.classList.add('firstParagraph');
@@ -143,13 +173,14 @@ function articleMaker(article) {
   secondParagraph.textContent = article.secondParagraph;
   thirdParagraph.textContent = article.thirdParagraphl
   expand.textContent = '+';
+  // toggles article-open event
   expand.addEventListener('click' , () => {
-    articleDiv.classList.toggle('article-open');
+    articleList.classList.toggle('article-open');
   })
-  return articleDiv;
+  return articleList;
 }
 
 data.forEach(obj => {
-  const articleDiv = articleMaker(obj);
-  articles.appendChild(articleDiv);
+  const articleList = articleMaker(obj);
+  articles.appendChild(articleList);
 })
